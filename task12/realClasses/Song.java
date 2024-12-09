@@ -1,4 +1,4 @@
-package ru.isys.trainings.task12.realClasses;
+package task12.realClasses;
 public class Song {
      private String title;
      private int byteSize;

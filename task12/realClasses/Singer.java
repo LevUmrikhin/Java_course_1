@@ -1,4 +1,4 @@
-package ru.isys.trainings.task12.realClasses;
+package task12.realClasses;
 import java.util.*;
 public class Singer {
     private String name;

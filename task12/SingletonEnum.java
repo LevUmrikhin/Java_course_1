@@ -1,5 +1,5 @@
-package ru.isys.trainings.task12;
-import ru.isys.trainings.task12.SingerFileDaoFactory;
+package task12;
+import task12.SingerFileDaoFactory;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;

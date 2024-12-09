@@ -1,9 +1,9 @@
-package ru.isys.trainings.task12;
+package task12;
 
-import ru.isys.trainings.task12.realClasses.Singer;
+import task12.realClasses.Singer;
 
 import java.util.List;
 
 public interface AbstractSingerDaoFactory {
-    public Object createSingerDao(List<Singer> singers) throws InterruptedException;
+    public SingerDao createSingerDao(List<Singer> singers) throws InterruptedException;
 }

@@ -1,16 +1,25 @@
-import ru.isys.trainings.task12.SingerFileDaoFactory;
-import ru.isys.trainings.task12.SingerJdbcDaoFactory;
-import ru.isys.trainings.task12.SingletonEnum;
-import ru.isys.trainings.task12.realClasses.Album;
-import ru.isys.trainings.task12.realClasses.Singer;
-import ru.isys.trainings.task12.realClasses.Song;
-import ru.isys.trainings.task12.*;
+package task12;
+
+import task12.SingerFileDaoFactory;
+import task12.SingerJdbcDaoFactory;
+import task12.SingletonEnum;
+import task12.realClasses.Album;
+import task12.realClasses.Singer;
+import task12.realClasses.Song;
+import task12.*;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class Main_task_12 {
     public static void main(String[] args) throws InterruptedException {
+
+        if (args.length == 0) {
+            System.out.println("Please specify a factory type as an argument.");
+            return;
+        }
+        String factoryType = args[0];
+
         // Create a Singer
         Singer singer = Singer.createSinger("John Doe");
         Singer singer2 = Singer.createSinger("Michael Jackson");
@@ -46,30 +55,37 @@ public class Main_task_12 {
         //create list of singers
         List<Singer> list1 = Arrays.asList(singer, singer2, singer3);
 
-
-        // Initialize DAO Factories
-        SingerFileDaoFactory fileDaoFactory = new SingerFileDaoFactory();
-        SingerJdbcDaoFactory jdbcDaoFactory = new SingerJdbcDaoFactory();
-
-        //
-        fileDaoFactory.createSingerDao(list1).findSingers();
-        fileDaoFactory.createSingerDao(list1);
-        SingerService a = new SingerService(fileDaoFactory.createSingerDao(list1));
-        a.filterByMinAlbumsCount(0);
+        switch (factoryType) {
+            case "SingerFileDaoFactory":
+                // Initialize DAO Factories
+                System.out.println("Using SingerFileDaoFactory");
+                SingerFileDaoFactory fileDaoFactory = new SingerFileDaoFactory();
 
 
+                //
+                fileDaoFactory.createSingerDao(list1).findSingers();
+                fileDaoFactory.createSingerDao(list1);
+                SingerService a = new SingerService(fileDaoFactory.createSingerDao(list1));
+                a.filterByMinAlbumsCount(0);
 
-        // Add DAO Factories to Singleton
-        SingletonEnum.INSTANCE.addSingerFileDaoFactory(fileDaoFactory);
-        SingletonEnum.INSTANCE.addSingerJdbcDaoFactory(jdbcDaoFactory);
 
-        // Print the Singleton's state
-        System.out.println(SingletonEnum.INSTANCE);
+                // Add DAO Factories to Singleton
+                SingletonEnum.INSTANCE.addSingerFileDaoFactory(fileDaoFactory);
 
-        // Example: Access factories from the Singleton
-        System.out.println("File DAO Factories: " + SingletonEnum.INSTANCE.getSingerFileDaoFactories());
-        System.out.println("JDBC DAO Factories: " + SingletonEnum.INSTANCE.getSingerJdbcDaoFactories());
+                // Print the Singleton's state
+                System.out.println(SingletonEnum.INSTANCE);
 
+                // Example: Access factories from the Singleton
+                System.out.println("File DAO Factories: " + SingletonEnum.INSTANCE.getSingerFileDaoFactories());
+
+                break;
+            case "SingerJdbcDaoFactory":
+                System.out.println("Using SingerJdbcDaoFactory");
+                SingerJdbcDaoFactory jdbcDaoFactory = new SingerJdbcDaoFactory();
+                SingletonEnum.INSTANCE.addSingerJdbcDaoFactory(jdbcDaoFactory);
+                System.out.println("JDBC DAO Factories: " + SingletonEnum.INSTANCE.getSingerJdbcDaoFactories());
+                break;
+        }
 
     }
 }
