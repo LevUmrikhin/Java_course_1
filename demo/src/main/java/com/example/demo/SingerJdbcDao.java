@@ -4,6 +4,8 @@ import com.example.demo.realClasses.Album;
 import com.example.demo.realClasses.Singer;
 import com.example.demo.realClasses.Song;
 
+import jakarta.annotation.PostConstruct;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -11,7 +13,12 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+@Component
 public class SingerJdbcDao implements SingerDao {
+    
     @Override
     public void SetList(List<Singer> singers){
         this.singers.addAll(singers);
@@ -25,10 +32,28 @@ public class SingerJdbcDao implements SingerDao {
     public SingerJdbcDao(List<Singer> singers) {
         this.singers = new ArrayList<>(singers); // Create a modifiable copy
     }
+    @Value("${data.singer.dao.jdbc.url}")
+    private String N_URL;
 
-    private static final String URL = "jdbc:postgresql://localhost:5432/music";
-    private static final String USER = "levumrihin";
-    private static final String PASSWORD = "Leoumr0221";
+    @Value("${data.singer.dao.jdbc.username}")
+    private String N_USER;
+
+    @Value("${data.singer.dao.jdbc.password}")
+    private String N_PASSWORD;
+
+    private static String URL;
+    private static String USER;
+    private static String PASSWORD;
+
+
+    @PostConstruct
+    private void initStaticFields() {
+        URL = N_URL;
+        USER = N_USER;
+        PASSWORD = N_PASSWORD;
+    }
+
+   
 
     @Override
     public List<Singer> findSingers() {

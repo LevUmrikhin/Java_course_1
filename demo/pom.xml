@@ -41,6 +41,7 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	<context:property-placeholder location="classpath*:application.properties"/>
 
 	<build>
 		<plugins>

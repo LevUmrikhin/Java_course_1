@@ -4,6 +4,8 @@ import com.example.demo.realClasses.Singer;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+@Component
 public class SingerJdbcDaoFactory implements AbstractSingerDaoFactory {
     @Override
     public SingerDao createSingerDao(List<Singer> singers) {
