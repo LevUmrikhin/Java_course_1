@@ -11,21 +11,21 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class SingerService {
-    private final SingerDao singerDao;
+    private final SingerDaoFactory singerDaoFactory;
 
-    public SingerService(SingerDao singerDao) {
-        this.singerDao = singerDao;
+    public SingerService(SingerDaoFactory singerDaoFactory) {
+        this.singerDaoFactory = singerDaoFactory;
     }
 
     public void filterBySongName(String songName) throws InterruptedException {
         // Create a modifiable copy of the list
-        List<Singer> singers = new ArrayList<>(singerDao.findSingers());
+        List<Singer> singers = new ArrayList<>(singerDaoFactory.getDao().findSingers());
 
         for (Singer singer : singers) {
             for (Album album : singer.getAlbums()) {
                 for (Song song : album.getSongs()) {
                     if (song.getTitle().equals(songName)) {
-                        singerDao.saveSingers(singers);
+                        singerDaoFactory.getDao().saveSingers(singers);
                         return;
                     }
                 }
@@ -35,11 +35,11 @@ public class SingerService {
 
     public void filterByMinAlbumsCount(int minAlbumsCount) throws InterruptedException {
         // Create a modifiable copy of the list
-        List<Singer> singers = new ArrayList<>(singerDao.findSingers());
+        List<Singer> singers = new ArrayList<>(singerDaoFactory.getDao().findSingers());
 
         for (Singer singer : singers) {
             if (singer.getAlbums().size() > minAlbumsCount) {
-                singerDao.saveSingers(singers);
+                singerDaoFactory.getDao().saveSingers(singers);
                 return;
             }
         }

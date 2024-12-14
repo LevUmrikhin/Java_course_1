@@ -7,6 +7,7 @@ import com.example.demo.realClasses.Song;
 import jakarta.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.StandardOpenOption;
@@ -20,6 +21,7 @@ import java.io.IOException;
 import java.util.stream.Collectors;
 
 @Component
+@Primary
 public class SingerFileDao implements SingerDao {
     private final List<Singer> singers; // Use `final` for immutability of reference
    
