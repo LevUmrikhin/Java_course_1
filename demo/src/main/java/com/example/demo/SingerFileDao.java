@@ -46,7 +46,7 @@ public class SingerFileDao implements SingerDao {
     }
     @Override
     public List<Singer> findSingers() {
-
+        System.out.println("Input file path: " + inputFile);
         Path start = Paths.get(inputFile);
         List<Singer> result = new ArrayList<>();
         try {

@@ -7,6 +7,9 @@ import com.example.demo.realClasses.Song;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class SingerService {
     private final SingerDao singerDao;
 

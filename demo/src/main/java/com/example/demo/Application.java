@@ -62,23 +62,23 @@ public class Application {
                 // Initialize DAO Factories
                 System.out.println("Using SingerFileDaoFactory");
               //  SingerFileDaoFactory fileDaoFactory = new SingerFileDaoFactory();
-              SingerFileDaoFactory fileDaoFactory = applicationContext.getBean(SingerFileDaoFactory.class);
-
+              SingerFileDao fileDao = applicationContext.getBean(SingerFileDao.class);
+                fileDao.SetList(list1);
                 //
-                fileDaoFactory.createSingerDao(list1).findSingers();
-                fileDaoFactory.createSingerDao(list1).saveSingers(list1);
-                SingerService a = new SingerService(fileDaoFactory.createSingerDao(list1));
+                fileDao.findSingers();
+                fileDao.saveSingers(list1);
+                SingerService a = new SingerService(fileDao);
                 a.filterByMinAlbumsCount(0);
 
 
                 // Add DAO Factories to Singleton
-                SingletonEnum.INSTANCE.addSingerFileDaoFactory(fileDaoFactory);
+                //SingletonEnum.INSTANCE.addSingerFileDaoFactory(fileDao);
 
                 // Print the Singleton's state
-                System.out.println(SingletonEnum.INSTANCE);
+             //   System.out.println(SingletonEnum.INSTANCE);
 
                 // Example: Access factories from the Singleton
-                System.out.println("File DAO Factories: " + SingletonEnum.INSTANCE.getSingerFileDaoFactories());
+              //  System.out.println("File DAO Factories: " + SingletonEnum.INSTANCE.getSingerFileDaoFactories());
 
                 break;
             case "SingerJdbcDaoFactory":
