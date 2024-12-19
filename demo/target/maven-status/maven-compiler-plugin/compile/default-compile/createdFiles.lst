@@ -1,0 +1,12 @@
+com/example/demo/Timed1.class
+com/example/demo/Application.class
+com/example/demo/SingerService.class
+com/example/demo/realClasses/Singer.class
+com/example/demo/SingerDao.class
+com/example/demo/SingerDaoFactory.class
+com/example/demo/realClasses/Song.class
+com/example/demo/SingerFileDao.class
+com/example/demo/AppConfig.class
+com/example/demo/SingerJdbcDao.class
+com/example/demo/LoggingAspect.class
+com/example/demo/realClasses/Album.class

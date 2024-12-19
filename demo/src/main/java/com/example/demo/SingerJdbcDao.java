@@ -1,9 +1,11 @@
 package com.example.demo;
 
+import com.codahale.metrics.annotation.Timed;
 import com.example.demo.realClasses.Album;
 import com.example.demo.realClasses.Singer;
 import com.example.demo.realClasses.Song;
 
+import io.astefanutti.metrics.aspectj.Metrics;
 import jakarta.annotation.PostConstruct;
 
 import java.sql.*;
@@ -17,6 +19,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
+@Metrics
 public class SingerJdbcDao implements SingerDao {
     
     @Override
@@ -56,6 +59,7 @@ public class SingerJdbcDao implements SingerDao {
    
 
     @Override
+    @Timed
     public List<Singer> findSingers() {
         List<Singer> result = new ArrayList<>();
         String query = "SELECT name FROM singers";

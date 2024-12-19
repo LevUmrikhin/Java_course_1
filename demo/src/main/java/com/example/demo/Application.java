@@ -3,10 +3,12 @@ package com.example.demo;
 import java.util.Arrays;
 import java.util.List;
 
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 import com.example.demo.realClasses.Album;
 import com.example.demo.realClasses.Singer;
@@ -14,9 +16,11 @@ import com.example.demo.realClasses.Song;
 
 @SpringBootApplication //equivalent to @ComponentScan
 @ComponentScan(basePackages = "com.example.demo")
+@EnableScheduling
 public class Application {
        
     public static void main(String[] args) throws InterruptedException {
+        //since i've got plugin for runtime weathing, aspects are automatically connected. 
         ApplicationContext applicationContext=SpringApplication.run(Application.class, args);
 
 

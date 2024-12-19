@@ -1,0 +1,13 @@
+/Users/levumrihin/IdeaProjects/demo/src/main/java/com/example/demo/AppConfig.java
+/Users/levumrihin/IdeaProjects/demo/src/main/java/com/example/demo/Application.java
+/Users/levumrihin/IdeaProjects/demo/src/main/java/com/example/demo/LoggingAspect.java
+/Users/levumrihin/IdeaProjects/demo/src/main/java/com/example/demo/SingerDao.java
+/Users/levumrihin/IdeaProjects/demo/src/main/java/com/example/demo/SingerDaoFactory.java
+/Users/levumrihin/IdeaProjects/demo/src/main/java/com/example/demo/SingerFileDao.java
+/Users/levumrihin/IdeaProjects/demo/src/main/java/com/example/demo/SingerJdbcDao.java
+/Users/levumrihin/IdeaProjects/demo/src/main/java/com/example/demo/SingerRowMapper.java
+/Users/levumrihin/IdeaProjects/demo/src/main/java/com/example/demo/SingerService.java
+/Users/levumrihin/IdeaProjects/demo/src/main/java/com/example/demo/Timed1.java
+/Users/levumrihin/IdeaProjects/demo/src/main/java/com/example/demo/realClasses/Album.java
+/Users/levumrihin/IdeaProjects/demo/src/main/java/com/example/demo/realClasses/Singer.java
+/Users/levumrihin/IdeaProjects/demo/src/main/java/com/example/demo/realClasses/Song.java

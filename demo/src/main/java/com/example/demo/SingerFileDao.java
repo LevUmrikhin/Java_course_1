@@ -1,9 +1,11 @@
 package com.example.demo;
 
+import com.codahale.metrics.annotation.Timed;
 import com.example.demo.realClasses.Album;
 import com.example.demo.realClasses.Singer;
 import com.example.demo.realClasses.Song;
 
+import io.astefanutti.metrics.aspectj.Metrics;
 import jakarta.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -22,6 +24,7 @@ import java.util.stream.Collectors;
 
 @Component
 @Primary
+@Metrics
 public class SingerFileDao implements SingerDao {
     private final List<Singer> singers; // Use `final` for immutability of reference
    
@@ -66,9 +69,11 @@ public class SingerFileDao implements SingerDao {
     }
 
     @Override
+    @Timed
     public void saveSingers(List<Singer> singersToSave) {
         // Clear the current list and add new singers
         //createFile
+        
         Path start = Paths.get(inputFile);
         Path path = Paths.get(outputFile);
         try {

@@ -26,10 +26,12 @@ public class SingerDaoFactory {
     }
     private final SingerFileDao singerFileDao;
     private final SingerJdbcDao singerJdbcDao;
+    private final SingerSpringDao singerSpringDao;
 
-    public SingerDaoFactory(SingerFileDao singerFileDao, SingerJdbcDao singerJdbcDao) {
+    public SingerDaoFactory(SingerFileDao singerFileDao, SingerJdbcDao singerJdbcDao, SingerSpringDao singerSpringDao) {
         this.singerFileDao = singerFileDao;
         this.singerJdbcDao = singerJdbcDao;
+        this.singerSpringDao = singerSpringDao;
         this.factoryType = factoryType;
     }
     
@@ -43,6 +45,8 @@ public class SingerDaoFactory {
             return singerFileDao;
             case "database":
             return singerJdbcDao;
+            case "spring":
+            return singerSpringDao;
             default:
             throw new ArithmeticException("factorytype");
         }
