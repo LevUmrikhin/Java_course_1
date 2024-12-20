@@ -26,6 +26,7 @@ public class Singerdb {
 
     public String getName() { return name; }
     public int getSinger_id() {return singer_id; }
+    public void setName(String n) {this.name= n;}
     
 
 }
