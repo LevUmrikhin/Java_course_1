@@ -8,12 +8,12 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 
-@Entity
+//@Entity
 public class Albumdb {
     private String title;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+   // @Id
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private int singer_id;
     private int album_id;
 

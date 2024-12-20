@@ -1,7 +1,8 @@
 package com.example.demo;
 
 import com.example.demo.realClasses.Singer;
-import com.example.demo.dbClasses.Singerdb;
+import com.example.demo.dbClasses.Singerhibernate;
+import com.example.demo.dbClasses.Singerhibernate;
 import com.example.demo.realClasses.Album;
 import com.example.demo.realClasses.Song;
 
@@ -21,7 +22,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class SingerService {
     @Autowired
-    private SingerdbRepository singerdbRepository;
+    private SingerhibernateRepository singerhibernateRepository;
     private final SingerDaoFactory singerDaoFactory;
 
     public SingerService(SingerDaoFactory singerDaoFactory) {
@@ -64,35 +65,35 @@ public class SingerService {
     }
 
        // Получение всех исполнителей
-    public List<Singerdb> getAllSingers() {
-        return singerdbRepository.findAll();
+    public List<Singerhibernate> getAllSingers() {
+        return singerhibernateRepository.findAll();
     }
 
     // Получение исполнителей постранично
-    public Page<Singerdb> getSingersByPage(int page, int size) {
+    public Page<Singerhibernate> getSingersByPage(int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
-        return singerdbRepository.findAll(pageable);
+        return singerhibernateRepository.findAll(pageable);
     }
 
     // Получение исполнителя по id
-    public Optional<Singerdb> getSingerById(int id) {
-        return singerdbRepository.findById(id);
+    public Optional<Singerhibernate> getSingerById(int id) {
+        return singerhibernateRepository.findById(id);
     }
 
     // Создание исполнителя
-    public Singerdb createSinger(Singerdb singer) {
-        return singerdbRepository.save(singer);
+    public Singerhibernate createSinger(Singerhibernate singer) {
+        return singerhibernateRepository.save(singer);
     }
 
     // Замена исполнителя по id
-    public Singerdb updateSinger(int id, Singerdb singerDetails) {
-        Singerdb singer = singerdbRepository.findById(id).orElseThrow(() -> new RuntimeException("Singer not found"));
-        singer.setName(singerDetails.getName());
-        return singerdbRepository.save(singer);
+    public Singerhibernate updateSinger(int id, Singerhibernate singerDetails) {
+        Singerhibernate singer = singerhibernateRepository.findById(id).orElseThrow(() -> new RuntimeException("Singer not found"));
+        singer.name = singerDetails.name;
+        return singerhibernateRepository.save(singer);
     }
 
     // Удаление исполнителя по id
     public void deleteSinger(int id) {
-        singerdbRepository.deleteById(id);
+        singerhibernateRepository.deleteById(id);
     }
 }

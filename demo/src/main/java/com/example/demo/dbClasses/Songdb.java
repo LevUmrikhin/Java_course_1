@@ -7,12 +7,12 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 
-@Entity
+//@Entity
 public class Songdb {
     private String title;
     
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+   // @Id
+   // @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int song_id;
     private int album_id;
 

@@ -9,11 +9,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 
 
-@Entity
+//@Entity
 
 public class Singerdb {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+   // @Id
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private int singer_id;
 
   
