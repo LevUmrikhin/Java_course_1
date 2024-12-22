@@ -16,3 +16,5 @@ CREATE TABLE IF NOT EXISTS public.songs_filtered_spring (
     album_id BIGINT NOT NULL,
     FOREIGN KEY (album_id) REFERENCES albums_filtered_spring(album_id) ON DELETE CASCADE
 );
+
+
