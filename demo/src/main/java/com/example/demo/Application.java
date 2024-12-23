@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.example.demo.realClasses.Album;
 import com.example.demo.realClasses.Singer;
@@ -61,7 +62,12 @@ public class Application {
                 SingerService a = applicationContext.getBean(SingerService.class);
                 a.filterByMinAlbumsCount(0);
 
-
+                BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+                String encodedPassword1 = passwordEncoder.encode("password1");
+                System.out.println("Encoded Password 1 is : " + encodedPassword1);
+            String encodedPassword2 = passwordEncoder.encode("password2");
+                System.out.println("Encoded Password 2 is : " + encodedPassword2);
+           
     }
 
 }
